@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task</title>
+
+</head>
+
+<body>
+    <style>
+        .onstock {
+            color: green;
+        }
+
+        .decoration {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sold {
+            color: red;
+        }
+
+        .user {
+            color: blue;
+        }
+
+        .vehiculos {
+            color: azure;
+
+        }
+    </style>
+
+    <main class="container">
+        <div class="row">
+            <div class="col md-6 offset-md-3">
+                <ul class="list-group">
+                    <h1 class="vehiculos">Vehiculos Listados: </h1>
+                    <br>
+                    {%for i in form%}
+                    {% if not i.sold %}
+
+                    <li class="list-group-item">
+
+
+                        <a href="{%url 'vehicle_details' i.id %}" class="decoration">
+                            <h2>{{i.name}}
+                                <h5 class="onstock">On Stock</h5>
+                            </h2>
+                        </a>
+                        <p>Created by:
+                        <h6 class="user">{{i.user.username}}</h6>
+                        </p>
+
+                    </li>
+                    {%else%}
+
+                    <li class="list-group-item">
+
+                        <header class="d-flex justify-content-between">
+                            <a href="{%url 'vehicle_details' i.id %}" class="decoration">
+                                <h2>{{i.name}}
+                                    <h5 class="sold">Sold</h5>
+                                </h2>
+                            </a>
+                            <p> Sold at: <strong>{{i.sold | date:'M j Y:i'}}</strong></p>
+
+                            <p>Created by:
+                            <h6 class="user">{{i.user.username}}</h6>
+                            </p>
+                        </header>
+                    </li>
+
+                    {% endif %}
+                    {%endfor%}
+
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+{% endblock %}

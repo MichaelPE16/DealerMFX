@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <main class="container py-5">
+        <section class="card card-body">
+            <h1>Dealer MFX</h1>
+            <p>
+                Bienvenido a nuestro <strong>sistema de gestión de inventario automotriz.</strong> Esta plataforma
+                permite
+                registrar y administrar eficientemente los vehículos disponibles en nuestro concesionario. Aquí podrá
+                realizar
+                un seguimiento detallado de cada unidad, desde su ingreso al inventario hasta su venta final,
+                incluyendo información específica como modelo, año y características particulares de cada vehículo.
+            </p>
+            <div class="text-center">
+                <a class="btn btn-primary" href="{% url 'singin'%}"> Sign in</a>
+                <a class="btn btn-primary" href="{% url 'singup'%}">Sign up</a>
+            </div>
+        </section>
+    </main>
+
+
+
+</body>
+
+</html>
+{% endblock %}

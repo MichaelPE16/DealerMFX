@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<style>
+    .user {
+        color: blue;
+    }
+</style>
+<main class="container my-5 p4 px-20 mb-5"
+    style="background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);;">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <h1>Editar</h1>
+            <form method="post">
+                {{error}}
+                {%csrf_token%}
+
+                <p>Created by
+                <h5 class="user">{{vehicle.user.username}}</h5>
+                </p>
+                {{form.as_p}}
+                <div class="text-center">
+                    <button class="btn btn-primary">Updated</button>
+                </div>
+            </form>
+
+            <div class="d-flex">
+                {%if not vehicle.sold%}
+                <form method="post" action="{%url 'sell' vehicle.id %}">
+                    {%csrf_token%}
+                    <div class="text-center">
+                        <button class="btn btn-success">Sell</button>
+                    </div>
+                </form>
+                {% endif %}
+
+                <form action="{%url 'delete' vehicle.id%}" method="post">
+                    {%csrf_token%}
+                    <div class="text-center">
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+            </div>
+
+
+            </form>
+        </div>
+    </div>
+</main>
+{%endblock%}

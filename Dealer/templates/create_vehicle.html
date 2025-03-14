@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/create_vehicle/" method="POST" class="card card-body mt-4">
+                <h2>Crear Nuevo Vehiculo</h2>
+                {%csrf_token%}
+                {{error}}
+                {{form.as_p}}
+                <div class="text-center">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
